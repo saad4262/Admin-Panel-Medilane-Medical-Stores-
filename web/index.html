@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="adminpanel1medilane">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>adminpanel1medilane</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+<!-- Firebase SDKs -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-analytics.js";
+  import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-storage.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA4FZnKhOzVO24b4bieRHRuk_0I9wywN2Q",
+    authDomain: "medilane-8bdc2.firebaseapp.com",
+    projectId: "medilane-8bdc2",
+    storageBucket: "medilane-8bdc2.appspot.com",
+      messagingSenderId: "642155354036",
+    appId: "1:642155354036:web:1a491506f2a8b5f8b744e1",
+    measurementId: "G-6ETXQY78F4"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  // Firebase Storage usage example
+  const storage = getStorage(app);
+  const imageRef = ref(storage, 'product_images/your_file_name.jpg');
+
+  getDownloadURL(imageRef).then((url) => {
+    console.log('Image URL:', url);
+
+    // OPTIONAL: Display image on the page
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = "Loaded from Firebase Storage";
+    img.width = 300;
+    document.body.appendChild(img);
+  }).catch((error) => {
+    console.error("Error fetching image URL:", error);
+  });
+</script>
+
+<script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
