@@ -2,6 +2,7 @@
 
 
 import 'package:adminpanel1medilane/res/app_style/app_style.dart';
+import 'package:adminpanel1medilane/view/notification_screen.dart';
 import 'package:adminpanel1medilane/view_models/auth_vm/auth_vm.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,7 +23,7 @@ import '../product_list/product_list.dart';
 class AdminDashboard extends StatelessWidget {
    AdminDashboard({super.key});
 
-  AuthController3 authController = Get.put(AuthController3());
+   AuthController3 authController = Get.put(AuthController3());
 
 
 
@@ -191,9 +192,11 @@ class AdminDashboard extends StatelessWidget {
       case "Invoice":
         return invoiceScreen(context);
       case "Message":
-        return ChatScreen();
+        return WebChatScreen();
       case "Product List":
         return ProductScreen();
+      case "Notification":
+        return NotificationScreen();  
       case "Logout":
         authController.logout();
         return const SizedBox.shrink();
@@ -210,7 +213,7 @@ class AdminDashboard extends StatelessWidget {
   }
   
   
-
+  
   Widget dashboardScreen(BuildContext context) {
     final mediaQuery = MediaQueryHelper(context);
 
